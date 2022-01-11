@@ -1,0 +1,7 @@
+# binaries
+capelo
+capelo.io
+
+# ui modules
+node_modules/
+ui/node_modules/
