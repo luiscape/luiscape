@@ -5,6 +5,7 @@ ifeq (${VERSION},)
 endif
 UNAME_S := $(shell uname -s)
 APP_NAME := capelo
+GH_USERNAME := luiscape
 
 # Colors for makin things prettier.
 magenta="\\033[34m"
@@ -64,15 +65,19 @@ test: ## runs all tests with py.test and reports coverage
 #                                                            #
 ##############################################################
 
-# build: check-env build-frontend
+build: check-env build-frontend
 build:
+	@echo " → building ${green}tools${reset}\n";
 	go build -o ${APP_NAME}
 	@echo "binary built successfully: ./${APP_NAME}"
 
 build-frontend: ## builds the frontend
 	@echo " → building ${green}frontend${reset}\n";
 	# build ui bundle outside of container
-	cd ui && yarn build && cd ..;
+	cd ui && yarn build && mv -v dist/* ${GH_USERNAME}.github.io/;
 
 check-env: ## checks that required env vars are defined
 	@echo "no env to check"
+
+deploy: ## updates github pages site
+	cd ${GH_USERNAME}.github.io && git add . && git commit -m "update" && git push origin;
