@@ -17,6 +17,7 @@ func Execute() {
 	// adds all available commands
 	rootCommand.AddCommand(IndexCommand())
 
+	// raise if there are any errors
 	if err := rootCommand.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
