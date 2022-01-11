@@ -25,14 +25,18 @@ const (
 // entries are organized with their entire path
 // and type
 type Entry struct {
-	Type         EntryType
-	Path         string
-	SectionName  string
-	CreationTime time.Time
+	Type         EntryType `json:"Type"`
+	Path         string    `json:"Path"`
+	SectionName  string    `json:"SectionName"`
+	CreationTime time.Time `json:"CreationTime"`
+}
+
+type EntryCollection struct {
+	Entries []Entry `json:"Entries"`
 }
 
 // walks a path structuring files into a database
-func Walk(path string) ([]Entry, error) {
+func Walk(path string) (EntryCollection, error) {
 
 	entries := []Entry{}
 	err := filepath.Walk(path,
@@ -75,19 +79,21 @@ func Walk(path string) ([]Entry, error) {
 			return nil
 		})
 
+	entryCollection := EntryCollection{Entries: entries}
+
 	// handle errors walking
 	if err != nil {
-		return entries, err
+		return entryCollection, err
 	}
 
 	fmt.Println("scanned database")
 	fmt.Printf("%+v\n", entries)
-	return entries, nil
+	return entryCollection, nil
 
 }
 
 // writes database to json file on disk
-func Write(path string, entries []Entry) error {
+func Write(path string, entries EntryCollection) error {
 	file, _ := json.MarshalIndent(entries, "", " ")
 	err := ioutil.WriteFile(path, file, 0644)
 	if err != nil {

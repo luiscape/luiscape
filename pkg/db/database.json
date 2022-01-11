@@ -1,0 +1,16 @@
+{
+ "Entries": [
+  {
+   "Type": "section",
+   "Path": "",
+   "SectionName": "",
+   "CreationTime": "0001-01-01T00:00:00Z"
+  },
+  {
+   "Type": "post",
+   "Path": "test.md",
+   "SectionName": "test",
+   "CreationTime": "0001-01-01T00:00:00Z"
+  }
+ ]
+}
