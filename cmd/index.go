@@ -29,6 +29,6 @@ func IndexCommand() *cobra.Command {
 		},
 	}
 
-	baseCmd.Flags().String("path", "./db", "path containing blog post articles in markdown")
+	baseCmd.Flags().String("path", "./ui/public/posts", "path containing blog post articles in markdown")
 	return baseCmd
 }
