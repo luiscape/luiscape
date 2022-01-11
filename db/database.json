@@ -1,0 +1,17 @@
+[
+ {
+  "Type": "section",
+  "Path": "db/",
+  "SectionName": ""
+ },
+ {
+  "Type": "section",
+  "Path": "db/misc",
+  "SectionName": ""
+ },
+ {
+  "Type": "post",
+  "Path": "db/misc/hello_world.md",
+  "SectionName": "misc"
+ }
+]
