@@ -74,10 +74,11 @@ build:
 build-frontend: ## builds the frontend
 	@echo " → building ${green}frontend${reset}\n";
 	# build ui bundle outside of container
-	cd ui && yarn build && mv -v dist/* ${GH_USERNAME}.github.io/;
+	cd ui && yarn build && mv -v dist/* ../${GH_USERNAME}.github.io/;
 
 check-env: ## checks that required env vars are defined
 	@echo "no env to check"
 
 deploy: ## updates github pages site
+	@echo " → deploying to ${green}${GH_USERNAME}.github.io${reset}\n";
 	cd ${GH_USERNAME}.github.io && git add . && git commit -m "update" && git push origin;
