@@ -1,4 +1,4 @@
-module github.com/luiscape/capelo.io
+module github.com/luiscape/luiscape
 
 go 1.16
 

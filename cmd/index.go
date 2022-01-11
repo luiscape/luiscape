@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/luiscape/capelo.io/pkg/db"
+	"github.com/luiscape/luiscape/pkg/db"
 	"github.com/spf13/cobra"
 )
 

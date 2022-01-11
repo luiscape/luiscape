@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/luiscape/capelo.io/cmd"
+	"github.com/luiscape/luiscape/cmd"
 )
 
 func main() {
