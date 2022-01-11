@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 )
 
 // looks for files that have this extension in order to make
@@ -24,9 +25,10 @@ const (
 // entries are organized with their entire path
 // and type
 type Entry struct {
-	Type        EntryType
-	Path        string
-	SectionName string
+	Type         EntryType
+	Path         string
+	SectionName  string
+	CreationTime time.Time
 }
 
 // walks a path structuring files into a database
@@ -54,14 +56,18 @@ func Walk(path string) ([]Entry, error) {
 				// check if extension is expected file extension
 				fileExtension := filepath.Ext(path)
 				if fileExtension == POST_EXTENSION {
+					entryType = Post
+
+					// get timestamp if this is a blog entry
+					modifiedtime := info.ModTime()
 
 					// add record to slice
-					entryType = Post
 					sectionName := filepath.Base(filepath.Dir(path))
 					entries = append(entries, Entry{
-						Type:        entryType,
-						Path:        path,
-						SectionName: sectionName,
+						Type:         entryType,
+						Path:         path,
+						SectionName:  sectionName,
+						CreationTime: modifiedtime,
 					})
 				}
 

@@ -2,16 +2,19 @@
  {
   "Type": "section",
   "Path": "db/",
-  "SectionName": ""
+  "SectionName": "",
+  "CreationTime": "0001-01-01T00:00:00Z"
  },
  {
   "Type": "section",
   "Path": "db/misc",
-  "SectionName": ""
+  "SectionName": "",
+  "CreationTime": "0001-01-01T00:00:00Z"
  },
  {
   "Type": "post",
   "Path": "db/misc/hello_world.md",
-  "SectionName": "misc"
+  "SectionName": "misc",
+  "CreationTime": "2022-01-11T10:14:09.59800952-05:00"
  }
 ]
