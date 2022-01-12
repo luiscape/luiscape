@@ -2,7 +2,6 @@ package db
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -122,8 +121,6 @@ func Walk(path string) (EntryCollection, error) {
 		return entryCollection, err
 	}
 
-	fmt.Println("scanned database")
-	fmt.Printf("%+v\n", entries)
 	return entryCollection, nil
 
 }
