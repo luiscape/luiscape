@@ -7,7 +7,7 @@
           <div v-if="post.Type == 'post'">
             <br />
             <!-- todo: create function with router to load md -->
-            <a :href="post.Path">
+            <a :href="`/#/post/${post.Path}`">
               {{ post.Path }}
             </a>
             <br />
@@ -44,7 +44,6 @@ export default {
         .get("/posts/database.json")
         .then(function (response) {
           self.posts = response.data.Entries;
-          console.log(self.posts);
         })
         .catch(function (error) {
           console.log(error);
