@@ -6,6 +6,7 @@ endif
 UNAME_S := $(shell uname -s)
 APP_NAME := capelo
 GH_USERNAME := luiscape
+POST_INDEX_PATH := ui/public/posts/database.json
 
 # Colors for makin things prettier.
 magenta="\\033[34m"
@@ -79,6 +80,7 @@ build-frontend: ## builds the frontend
 index-posts: ## creates an index of posts
 	@echo " → building ${green}post index${reset}\n";
 	./capelo index;
+	git add ${POST_INDEX_PATH} && git commit -m 'updates post index';
 
 publish: index-posts build-frontend
 publish: ## updates github pages site
