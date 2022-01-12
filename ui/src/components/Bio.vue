@@ -7,7 +7,7 @@
         including cognition and creativity.
       </p>
       <p>
-        I was previously the co-founder and CTO of Grid.ai; alumni of
+        I was previously the co-founder and CTO of <a href="https://grid.ai" target="_blank" class="special-link">Grid.ai</a>; alumn of
         <a href="https://glossier.com" target="_blank">Glossier</a>,
         <a href="https://forbes.com" target="_blank">Forbes Media</a>,
         <a href="https://flowminder.org" target="_blank">Flowminder</a>, and the
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "Landing",
+  name: "Bio",
 };
 </script>
 
@@ -28,5 +28,8 @@ export default {
 .content {
   /* top right bottom left */
   margin: 0 0 0 12%;
+}
+.special-link {
+  font-weight: 700;
 }
 </style>

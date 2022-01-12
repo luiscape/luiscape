@@ -1,21 +1,6 @@
 <template>
-  <div class="main">
-    <Landing/>
-    <Posts />
-  </div>
+    <router-view />
 </template>
-
-<script>
-import Landing from "./components/Landing.vue";
-import Posts from "./components/Posts.vue";
-
-export default {
-  components: {
-    Landing,
-    Posts,
-  },
-};
-</script>
 
 <style>
 * {
@@ -31,8 +16,5 @@ h2 {
   font-family: 'Work Sans', serif;  
   font-weight: 800;
   font-size: 26px;
-}
-.main {
-  margin-top: 10%;
 }
 </style>
