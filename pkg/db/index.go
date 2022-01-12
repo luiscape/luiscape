@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -29,10 +30,35 @@ type Entry struct {
 	Path         string    `json:"Path"`
 	SectionName  string    `json:"SectionName"`
 	CreationTime time.Time `json:"CreationTime"`
+	Title        string    `json:"Title"`
 }
 
 type EntryCollection struct {
 	Entries []Entry `json:"Entries"`
+}
+
+// extracts title from a markdown file
+// title is considered the first line
+// without the header characters
+func ExtractTitle(path string) (string, error) {
+
+	// read file
+	fileIO, err := os.OpenFile(path, os.O_RDWR, 0600)
+	if err != nil {
+		return "", err
+	}
+	defer fileIO.Close()
+	rawBytes, err := ioutil.ReadAll(fileIO)
+	if err != nil {
+		return "", err
+	}
+
+	// find title and remove markdown characters
+	lines := strings.Split(string(rawBytes), "\n")
+	title := lines[0]
+	title = strings.ReplaceAll(title, "# ", "")
+
+	return title, nil
 }
 
 // walks a path structuring files into a database
@@ -65,6 +91,12 @@ func Walk(path string) (EntryCollection, error) {
 				if fileExtension == POST_EXTENSION {
 					entryType = Post
 
+					// extract title from markdown file
+					title, err := ExtractTitle(path)
+					if err != nil {
+						return err
+					}
+
 					// get timestamp if this is a blog entry
 					modifiedtime := info.ModTime()
 
@@ -75,6 +107,7 @@ func Walk(path string) (EntryCollection, error) {
 						Path:         filename,
 						SectionName:  parent,
 						CreationTime: modifiedtime,
+						Title:        title,
 					})
 				}
 
