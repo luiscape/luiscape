@@ -2,19 +2,19 @@
  "Entries": [
   {
    "Type": "section",
-   "Path": "posts/",
+   "Path": "./ui/public/posts",
    "SectionName": "",
    "CreationTime": "0001-01-01T00:00:00Z"
   },
   {
    "Type": "section",
-   "Path": "posts/misc",
+   "Path": "ui/public/posts/misc",
    "SectionName": "",
    "CreationTime": "0001-01-01T00:00:00Z"
   },
   {
    "Type": "post",
-   "Path": "posts/misc/hello_world.md",
+   "Path": "ui/public/posts/misc/hello_world.md",
    "SectionName": "misc",
    "CreationTime": "2022-01-11T12:35:36.709888265-05:00"
   }
