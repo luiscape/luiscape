@@ -4,13 +4,15 @@
    "Type": "section",
    "Path": "",
    "SectionName": "",
-   "CreationTime": "0001-01-01T00:00:00Z"
+   "CreationTime": "0001-01-01T00:00:00Z",
+   "Title": ""
   },
   {
    "Type": "post",
    "Path": "test.md",
    "SectionName": "test",
-   "CreationTime": "0001-01-01T00:00:00Z"
+   "CreationTime": "0001-01-01T00:00:00Z",
+   "Title": ""
   }
  ]
 }

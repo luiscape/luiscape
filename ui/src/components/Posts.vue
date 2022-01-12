@@ -7,13 +7,13 @@
           <div v-if="post.Type == 'post'">
             <br />
             <!-- todo: create function with router to load md -->
-            <a :href="`/#/post/${post.Path}`">
-              {{ post.Path }}
-            </a>
-            <br />
             <span class="timestamp">
               {{ moment(post.CreationTime).format("MMMM DD, YYYY") }}
-            </span>
+            </span> - 
+            <a :href="`/#/post/${post.Path}`">
+              {{ post.Title }}
+            </a>
+            <br />
           </div>
         </el-row>
       </div>

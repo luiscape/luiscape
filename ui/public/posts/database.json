@@ -4,19 +4,22 @@
    "Type": "section",
    "Path": "public",
    "SectionName": "",
-   "CreationTime": "0001-01-01T00:00:00Z"
+   "CreationTime": "0001-01-01T00:00:00Z",
+   "Title": ""
   },
   {
    "Type": "section",
    "Path": "posts",
    "SectionName": "",
-   "CreationTime": "0001-01-01T00:00:00Z"
+   "CreationTime": "0001-01-01T00:00:00Z",
+   "Title": ""
   },
   {
    "Type": "post",
    "Path": "misc/hello_world.md",
    "SectionName": "misc",
-   "CreationTime": "2022-01-11T12:35:36.709888265-05:00"
+   "CreationTime": "2022-01-11T12:35:36.709888265-05:00",
+   "Title": "Hello World"
   }
  ]
 }
