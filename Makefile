@@ -65,7 +65,6 @@ test: ## runs all tests with py.test and reports coverage
 #                                                            #
 ##############################################################
 
-build: check-env build-frontend
 build:
 	@echo " → building ${green}tools${reset}\n";
 	go build -o ${APP_NAME}
@@ -73,12 +72,15 @@ build:
 
 build-frontend: ## builds the frontend
 	@echo " → building ${green}frontend${reset}\n";
-	# build ui bundle outside of container
-	cd ui && yarn build && mv -v dist/* ../${GH_USERNAME}.github.io/;
+	# build ui bundle
+	cd ui && yarn build && cp -r dist/* ../${GH_USERNAME}.github.io/;
+	# cd ui && yarn build && mv -v dist/* ../${GH_USERNAME}.github.io/;
 
-check-env: ## checks that required env vars are defined
-	@echo "no env to check"
+index-posts: ## creates an index of posts
+	@echo " → building ${green}post index${reset}\n";
+	./capelo index;
 
-deploy: ## updates github pages site
+publish: index-posts build-frontend
+publish: ## updates github pages site
 	@echo " → deploying to ${green}${GH_USERNAME}.github.io${reset}\n";
 	cd ${GH_USERNAME}.github.io && git add . && git commit -m "update" && git push origin;
