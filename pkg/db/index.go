@@ -45,6 +45,9 @@ func Walk(path string) (EntryCollection, error) {
 				return err
 			}
 
+			// parent directory
+			parent := filepath.Base(filepath.Dir(path))
+
 			// check if path is directory
 			entryType := Section
 			if info.IsDir() {
@@ -52,7 +55,7 @@ func Walk(path string) (EntryCollection, error) {
 				// add record to slice
 				entries = append(entries, Entry{
 					Type: entryType,
-					Path: path,
+					Path: parent,
 				})
 
 			} else {
@@ -66,11 +69,11 @@ func Walk(path string) (EntryCollection, error) {
 					modifiedtime := info.ModTime()
 
 					// add record to slice
-					sectionName := filepath.Base(filepath.Dir(path))
+					filename := filepath.Join(parent, filepath.Base(path))
 					entries = append(entries, Entry{
 						Type:         entryType,
-						Path:         path,
-						SectionName:  sectionName,
+						Path:         filename,
+						SectionName:  parent,
 						CreationTime: modifiedtime,
 					})
 				}
