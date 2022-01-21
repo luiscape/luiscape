@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" class="content">
-      <h2>Posts</h2>
+      <h2 v-if="posts.length > 0">Posts</h2>
       <div>
         <el-row v-for="post in posts" :key="post.id" class="posts">
           <div v-if="post.Type == 'post'">
