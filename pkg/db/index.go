@@ -61,10 +61,11 @@ func ExtractTitle(path string) (string, error) {
 }
 
 // walks a path structuring files into a database
-func Walk(path string) (EntryCollection, error) {
+func Walk(targetPath string) (EntryCollection, error) {
 
 	entries := []Entry{}
-	err := filepath.Walk(path,
+	targetPathParent := filepath.Base(filepath.Dir(targetPath))
+	err := filepath.Walk(targetPath,
 		func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
@@ -76,6 +77,11 @@ func Walk(path string) (EntryCollection, error) {
 			// check if path is directory
 			entryType := Section
 			if info.IsDir() {
+
+				// skip indexing root directory as a section
+				if parent == targetPathParent {
+					return nil
+				}
 
 				// add record to slice
 				entries = append(entries, Entry{

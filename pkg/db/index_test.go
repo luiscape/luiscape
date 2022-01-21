@@ -88,7 +88,7 @@ func TestWalk(t *testing.T) {
 	}
 
 	// test database structure is what's expected
-	if len(entries.Entries) != 3 {
+	if len(entries.Entries) != 2 {
 		t.Logf("entry database wrong")
 		fmt.Println(tempDir)
 		fmt.Printf("%+v\n", entries)
